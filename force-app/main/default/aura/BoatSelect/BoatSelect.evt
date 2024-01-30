@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" description="Boat Event" >
+
+	<aura:attribute name="boatId" type="String"/>
+
+
+</aura:event>

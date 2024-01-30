@@ -1,0 +1,37 @@
+<apex:page controller="controller1">
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock title="Save the Date Info" id="pb1">
+            <apex:commandButton action="update" value="update1"  rerender="debug"/>
+            
+        	<apex:pageBlockSection collapsible="false"> 
+                
+                    <apex:outputLabel for="cc" value="CC" style="font-weight: bold" ></apex:outputLabel>  
+                       
+                        <apex:inputTextArea id="cc" cols="50" value="{!toCCAddresses}"  >
+                            <apex:actionSupport event="onkeyup"  reRender="debug"/> 
+                        </apex:inputTextArea>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel for="cc" value="CC" style="font-weight: bold" ></apex:outputLabel>  
+                    <apex:outputPanel >   
+                        <apex:inputTextArea id="cc" cols="50" value="{!toCCAddresses}" style="width:200px">
+                        	<apex:actionSupport event="onkeyup"  reRender="debug"/>
+                        </apex:inputTextArea>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+              
+                
+            </apex:pageBlockSection>   
+            
+            <apex:pageBlock title="Debug - SOQL" id="debug">
+                DEBUG: _______________________________----
+            {!toCCAddresses}
+      					<apex:outputText value="{!toCCAddresses}" />           
+  			</apex:pageBlock>    
+        </apex:pageBlock>
+       
+        
+        
+    </apex:form>
+</apex:page>

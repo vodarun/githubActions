@@ -1,0 +1,22 @@
+<apex:page id="loginPage" controller="CommunitiesLoginController" title="{!$Label.site.site_login}">
+    <apex:messages />
+    <apex:form >
+        <body>
+            <!-- Begin Page Content -->
+            <div id="container">
+                <form>
+                    <label for="username">Username:</label>
+                    <apex:inputtext value="{!username}" id="username"/>
+                    <label for="password">Password:</label>
+                    <apex:inputsecret value="{!password}" id="password"/>
+                    <div class="container" style="margin-left: -15px">
+                        <apex:commandButton action="{!login}" styleClass="btn btn-success" value="Login"/>
+                    </div>
+                </form>
+            </div><!--/ container-->
+            <!-- End Page Content -->
+        </body>
+    </apex:form>
+    
+    
+</apex:page>

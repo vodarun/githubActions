@@ -1,0 +1,45 @@
+<!-- Super Badge -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" controller="BoatSearchFormControllerSrvrside" access="global">
+	
+	
+                                                    
+	<aura:attribute name="typesOfBoats" type="BoatType__c[]" /> 
+	<!-- stores selected boat  name -->
+	<aura:attribute name="selectedBoat" type="String" default=""/>
+	<!-- stores boattype map and Id-->
+	<aura:attribute name="boatTypeMap" type="Map"/>
+	<!-- renders new button -->
+	<aura:attribute name='showNewButton' type='Boolean' default='false'/>
+	<!-- get boatTypes on pageLoad. -->
+	<aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <!--
+    <aura:handler name="formSubmit" event="c:FormSubmit" action="{!c.onFormSubmit}" phase="capture"/>
+	-->
+    <aura:registerEvent name="formSubmit" type="c:FormSubmit"/>
+    
+	<div class="c-container">
+		<lightning:layout horizontalAlign="center">
+
+			<lightning:layoutItem flexibility="auto"   class="slds-grid_vertical-align-center" >
+
+				<lightning:select aura:id="boatSelectionId" name="boatType" label="Please Select" onchange="{!c.updateBoatTypeSelection}">
+	                <option value="" > All Types </option>                
+	                <aura:iteration items="{!v.typesOfBoats}" var="item">
+	                    <option text="{!item.Name}" value="{!item.Name}"></option>
+	                </aura:iteration>
+				</lightning:select>  
+
+			</lightning:layoutItem>
+
+			<lightning:layoutItem flexibility="auto" padding="around-small"  class="slds-grid_vertical-align-center" >
+				<lightning:button variant="brand" label="Search"  onclick='{!c.onFormSubmit}'/>
+				<aura:if isTrue="{!v.showNewButton}">
+					<lightning:button variant="neutral" label="New" onclick="{!c.createRecord}"/>
+				</aura:if>				
+			</lightning:layoutItem>
+
+		</lightning:layout>
+	</div>
+
+	
+</aura:component>

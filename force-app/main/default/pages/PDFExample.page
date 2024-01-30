@@ -1,0 +1,21 @@
+<apex:page standardController="Account" standardStylesheets="false" renderAs="pdf" applyBodyTag="false" applyHtmlTag="false"
+    showHeader="false" sidebar="false"   docType="html-5.0">
+    {!Account.Description}
+    
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />      
+            <!-- <apex:stylesheet value="{!$Resource.shipmentinvoiceus}"/> -->
+    <style type="text/css">
+    	
+               @page{
+                    margin-top: 69in;             
+                    margin-left: 4.5in;
+                    margin-right: 2.5in;
+                    margin-bottom: 1in;
+                    size: 216mm 279mm;                           
+               }
+    
+    
+    </style>
+
+
+</apex:page>

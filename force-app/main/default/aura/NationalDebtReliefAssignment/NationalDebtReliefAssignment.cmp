@@ -1,0 +1,45 @@
+<!-- NationalDebtReliefAssignment -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:actionOverride" controller="NDRAController">
+    <lightning:notificationsLibrary aura:id="notifLib" />
+    <!-- Attributes -->
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="data" type="NDRAController.TableDataWrapper[]" />
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>
+    <aura:attribute name="createdDate" type="Date" />
+    <aura:attribute name="closedDate" type="Date" />
+	<!-- Init handler-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- spinner handler -->
+    <aura:handler event="aura:waiting" action="{!c.waiting}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.doneWaiting}"/>
+	<span id="Accspinner" style="display:none"><ui:spinner /></span>
+    <!-- Date Filters -->
+    <div class="slds-box slds-theme_default">
+    	<lightning:layout>
+            <lightning:layoutItem flexibility="auto" padding="around-small">
+            	<lightning:input aura:id="leadCreatedDate" type="date" name="Lead Created Date" label="Lead Created Date" required="true" value="{!v.createdDate}"/>        
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" padding="around-small">
+            	<lightning:input aura:id="oppClosedDate" type="date" name="Opportunity Cloded Date" label="Opportunity Cloded Date" required="true" value="{!v.closedDate}"/>  
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+
+    <!-- Data Table -->
+    <div  >
+    	<lightning:datatable    keyField="Id"
+                            data="{! v.data}"
+                            columns="{! v.columns }"
+                            hideCheckboxColumn="true"
+                            sortedBy="{!v.sortedBy}"  
+                         	sortedDirection="{!v.sortedDirection}"
+                            onsort="{! c.updateColumnSorting }"/>
+    </div>
+    
+    <!-- Button -->
+    <div class="slds-align_absolute-center">
+    	<lightning:button variant="brand" label="Get Data" title="Get Data" onclick="{! c.getData }" />
+    </div>
+    
+</aura:component>

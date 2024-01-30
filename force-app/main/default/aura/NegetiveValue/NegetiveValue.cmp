@@ -1,0 +1,40 @@
+<aura:component >
+	<ltng:require scripts="{!$Resource.NegevtiveNumberParser}"
+                  afterScriptsLoaded="{!c.doInit}"/>
+        
+    <aura:attribute name="value" type="String" default="" />
+     <aura:attribute name="type" type="String" default="Decimal"/> 
+    <aura:attribute name="Number1" type="Decimal" default="1234"/>
+    <aura:attribute name="Number2" type="String" />        
+    <aura:attribute name="showNumberInParenthesis" type="boolean" default="false"/>   
+    
+ 
+    
+   
+    
+    <div onclick="{!c.handleSaveRecord}">
+        
+        <lightning:input messageWhenStepMismatch="Whole numbers required"
+                         label="Inpute Number test"
+                         aura:id="inputCell" 
+                         value="{!v.value}" 
+                         type="{!equals(v.type, 'Decimal') ? 'number' : 'text'}" 
+                         formatter="decimal" 
+                         step="0.001" 
+                         />  
+        
+        
+        <aura:if isTrue="{!v.showNumberInParenthesis}">
+            
+            
+            
+            <lightning:input aura:id="num" class="red" disabled="true" name="input7" label="Number +++++++++++++++++++" value="{!v.Number2}"  required="true"/>
+        	
+            <aura:set attribute="else">
+                THis is in numer format
+				<lightning:input aura:id="num" class="red" type="number" name="input7" label="Number field with currency formatter" value="{!v.Number1}" formatter="currency" step="0.01" onfocusout="{!c.doInit}" required="true" />                
+            </aura:set>
+        </aura:if>
+    </div>
+	
+</aura:component>

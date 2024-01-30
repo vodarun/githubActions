@@ -1,0 +1,11 @@
+window._negativeParser = ( function(){
+	return{
+		getValue: function(n){
+			if(n < 0){
+				n = -1 * n;
+				n = "(" +(n).toLocaleString("en-US",{Style:"currency"})+ ")";
+			}
+			return n;
+		}
+	}
+}());

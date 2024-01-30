@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+                access="global" controller="NDRAController" >
+    <aura:attribute name="sampleText" type="string"/> 
+    <lightning:input name="input8" value="{! v.sampleText }" 
+                     placeholder="type your first name..." 
+                     label="Text field with attribute binding" />
+    
+    <lightning:button variant="base" label="Base" title="Base action" onclick="{!c.handleClick}"/>
+    
+</aura:component>
